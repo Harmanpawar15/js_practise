@@ -84,7 +84,7 @@ let arrayFun=[111,222,333,444]
 
 function getArray(anyArray)
 {   
-    return anyArray[0] ; //return 333 from array which is at 2 position 
+    return anyArray[22] ; //return 333 from array which is at 2 position 
 
 }
 console.log(getArray(arrayFun));
