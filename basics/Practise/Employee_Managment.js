@@ -19,43 +19,30 @@ let employee_1 ={
 //     salary:100000 ,
 //     department:"Managment"
 
-// }
-
-// array for list of job title availaible:
-let  availableJobTitles=["Junior Developer","Middle Developer", "Senior Developer"] ;
-//console.log(availableJobTitles)
-
-//let availableJobTitles=[1,2,3]
+//}
 
 
 // function to promote employee :
 
-function promoteEmployee ( letobj ,letarray) {
-    letobj.jobtitle="Senior Developer" ;
-    //console.log(letobj.jobtitle)
-    //return letarray;
-     for (let i=0 ; i<letarray.length;i++){
-        console.log(letarray[i]);
-    if (letarray[i]===letobj.jobtitle){
-        console.log(`Congratulation ${letobj.name} has been promoted as a Senior developer`)
-         return  true ;
-         }
-         
-         else{
-             console.log("error")
-              return false ;
-             
-         }
-        }
-     
-}
-    //    // console.log("hhh")
-    // }
-    // else
-    //  {
-    //     console.log("error ")
-    //  }}
-    // }
+function promoteEmployee ( letobj , newJob) {
 
-promoteEmployee(employee_1,availableJobTitles);
-//console.log(promoteEmployee(availableJobTitles));
+    //update job title of Employee to new job title:
+       letobj.jobtitle=newJob;
+
+    // Array of job titles avaiable for promotion:
+    let  arrJob=["Junior Developer","Middle Developer", "Senior Developer"] ;
+    if(arrJob.includes(newJob)){
+        console.log(` Congrates,${letobj.name} has been promoted as ${newJob}`);
+
+    }
+    else {
+        console.log('Promotion not Recognized')
+    }
+
+
+}
+// new job title for promotion:
+//let newJobtitle='Developer';
+let newJobtitle='Middle Developer' ;
+
+promoteEmployee(employee_1,newJobtitle);
