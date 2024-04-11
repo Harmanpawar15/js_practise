@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM  </title>
+</head>
+<body style="background-color:#212121; color:■#fff;">
+
+</body>
+
+<script>
+    // create new element  properties manually:
+   let div= document.createElement('div');
+   console.log(div)
+   div.className='divClass';
+   div.id='divId' ;
+   div.style.color='pink' ;
+   div.style.backgroundColor='white'
+   // ways to set attributes:
+
+   div.title='This is a title attribute of the div tag.' ;
+   div.setAttribute('else', 'whatelse')
+
+  // create text node 
+  let sample_text= document.createTextNode("This is sample node") ;
+  div.appendChild(sample_text);
+  document.body.appendChild(div);
+</script>
+</html>
