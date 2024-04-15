@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM PRACTISE</title>
+</head>
+<body >
+
+    <ul class="Fruits" >
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Grapes</li>
+    </ul>
+</body>
+
+
+<script>
+
+ // function to enter new elemnt in list  in DOM: this method not optimized 
+  function newElement (newFruit){
+    let li=document.createElement('li');
+    li.innerHTML= `${newFruit}`;
+    document.querySelector('.Fruits').appendChild(li);
+   
+  }
+  newElement('Orange')
+  
+
+ // ##########################################################################################################################################################
+
+
+
+  // More optimized way to add elemnt in the list : Most preferable one:
+
+  function secondElement(nextFruit){
+    let li=document.createElement('li') ;
+    let a = document.createTextNode(nextFruit);
+    li.appendChild(a);
+    document.querySelector('.Fruits').appendChild(li)
+
+  }
+  secondElement('Cheeries')
+
+
+   // Edit Elements in DOM:
+
+   // 1 approcah:
+   let editElement= document.querySelector("li:nth-child(3)");
+   editElement.innerHTML='Peach';
+
+   //2nd approach :
+   const li = document.createElement('li') ;
+   li.textContent="Pear" ;
+   editElement.replaceWith(li);
+
+   //3rd approach:
+   let frstElement= document.querySelector("li:first-child") ;
+   frstElement.outerHTML =  '<li>Avocado </li>'
+
+ 
+ 
+// remove element from list:
+let removeElement=document.querySelector("li:nth-child(4)");
+removeElement.remove();
+
+
+</script>
+
+
+
+</html>
