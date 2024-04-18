@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<!--  
+ to put images in grid view  -->
+<!-- <style>
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 10px;
+    }
+    .image-grid img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style> -->
+
+
+<!-- jQuery - on
+Topics to learn in depth:
+ type, timestamp, defaultPrevented
+target, toElement, srcElement, currentTarget,
+clientX, clientY, screenX, screenY
+ altkey, ctrlkey, shiftkey, keyCode -->
+
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images" class="image-grid">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+     // Event Propogation 
+document.getElementById("images").addEventListener('click', function (e) {
+    //console.log("Outer Element selected ")
+} , false ); 
+
+// event bubling , by default its false :take element from inner to outer 
+
+    document.getElementById("owl").addEventListener('click', function(e){
+       // console.log(e);
+        //console.log(e.timeStamp); 
+       // console.log("Inner element Selected ")
+       // e.stopPropagation(); // to stop propogation  of the click event upwards, only print selected element
+    }, true )   // event caputring: outer to inner element 
+
+   // prevent default: tp prevent default behavior of element
+
+   document.getElementById( "google" ).addEventListener('click' ,function(e){
+   // e.stopPropagation(); // to stop bubbling 
+     // e.preventDefault();
+      //console.log("Google clicked")
+
+   },false )
+
+   // Click and remove image :
+
+   document.getElementById('images').addEventListener('click', function(e){
+
+    console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+
+    
+
+
+
+
+   } ,)
+    
+    
+        
+   
+    
+    
+</script>
+</html>
