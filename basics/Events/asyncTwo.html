@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1 id="title">Basic of Async  in Javascript</h1>
+   <button id="btn1">Start</button>
+   <button id="btn2">Stop</button>
+</body>
+
+<script>
+// About Setinterval and clearInterval :
+
+// const sayDate = function (str){
+//     console.log( str ,Date.now())
+// }
+//  let interval = setInterval(sayDate , 1000 , "hi") 
+
+//  clearInterval(interval) // stop the action
+
+
+// now  when i press start button  it will print " Welcome "every second but after pressing stop button it should not do anything .
+
+var interval ;
+const sayText = function (){
+    console.log( "Welcome" )
+    
+}
+
+let btn1= document.querySelector("#btn1").addEventListener('click' , function(e){
+    console.log("SetInterval Activated ") ;
+    interval=setInterval(sayText ,500);
+     
+} )
+
+
+let btn2 = document.querySelector('#btn2').addEventListener('click',function(){
+    
+    console.log("Stopping Interval");
+    clearInterval(interval);
+   // clearInterval(sayText);
+})
+
+
+
+  </script>
+</html>
