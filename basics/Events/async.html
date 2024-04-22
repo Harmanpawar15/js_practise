@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <h1 id="title">This is title</h1>
+    <button id="btn">Stop</button>
+ </body>
+
+
+ <script>
+// settimeout: run particular function after given interval of time  in milliseconds : plus it has handeler i.e fuinction without name
+
+let fnt= function(){
+   let titlee= document.getElementById('title') ;
+  titlee.innerHTML="I am changed "
+
+}
+
+ const changeMe=setTimeout ( fnt , 2000) // in here dont call fnt just give reference of that fnt
+
+
+
+ document.querySelector( '#btn' ).addEventListener ('click', function(){
+   clearTimeout(changeMe);// stop the timer
+   console.log("stoped");
+ } )
+
+
+   </script>
+ </html>
