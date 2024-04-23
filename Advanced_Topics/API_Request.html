@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body {
+            background-color: #b68080;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #f0e9e9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .card img {
+            width: 200px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        #btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #btn:hover {
+            background-color: #0056b3;
+        }
+        #text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body >
+    <!-- Value	State	Description:
+0:UNSENT:Client has been created. open() not called yet.
+1:OPENED:open() has been called.
+2:HEADERS_RECEIVED:send() has been called, and headers and status are available.
+3:LOADING:Downloading; responseText holds partial data.
+4:DONE:The operation is complete. -->
+
+<div class="card">
+    <img src="" >
+    <button id="btn">Check Location </button>
+    <p id="text"></p> 
+    
+
+
+
+
+</div>
+   
+</body>
+<script>
+     let cardHolder=document.querySelector( ".card" );
+     let btn = document.getElementById("btn");
+     let text=document.getElementById( "text") ;
+
+let requesthttp= "https://api.github.com/users/Harmanpawar15" ; // URL for the API 
+ let request= new XMLHttpRequest();
+ request.open('GET' , requesthttp) // will take two parameters 
+ //console.log(request.readyState) // will track request state for once 
+
+
+ // to track http request continously :
+ request.onreadystatechange = function (){
+    // print the  state of the HTTP request from 1-4 descibed above 
+    console.log(request.readyState) 
+
+    if (request.readyState===4){
+        // console.log("The operation is complete");
+        // to get data of url :
+        let tempData= JSON.parse(this.responseText)// the data we got is string , have to convert into object to acess data
+        console.log(tempData) ;   // undefined due to  data type issue
+
+        // to dispplay  profile picture 
+        let  imgUrl=tempData.avatar_url
+        let imageHolder=document.createElement( 'img') ;
+        imageHolder.src=imgUrl
+        imageHolder.alt = "Image";
+        imageHolder.style.width = "200px";
+        // Append the image element to the container in the DOM
+        var container = document.querySelector( '.card');
+        container.appendChild(imageHolder);
+
+        // when button is clicked it will display location   in html page:
+        btn.addEventListener('click' , function(e){
+            text.innerHTML= ` Location : ${tempData.location}`;
+
+        }) 
+       
+    }
+}
+request.send();// this method used to send a request to server
+
+</script>
+</html>
